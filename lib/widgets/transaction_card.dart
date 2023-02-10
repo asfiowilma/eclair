@@ -29,46 +29,19 @@ class TransactionCard extends StatelessWidget {
             fontSize: 16,
           ),
         ),
-        trailing: IconButton(
-          icon: const Icon(Icons.delete),
-          color: Colors.red,
-          onPressed: () => deleteTx(tx.id),
-        ),
+        trailing: MediaQuery.of(context).size.width > 425
+            ? TextButton.icon(
+                icon: const Icon(Icons.delete),
+                label: const Text("Delete"),
+                style: TextButton.styleFrom(foregroundColor: Colors.red),
+                onPressed: () => deleteTx(tx.id),
+              )
+            : IconButton(
+                icon: const Icon(Icons.delete),
+                color: Colors.red,
+                onPressed: () => deleteTx(tx.id),
+              ),
       ),
     );
-
-    // Card(
-    //   child: Container(
-    //     padding: const EdgeInsets.all(16),
-    //     child:
-    //         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-    //       Column(
-    //         crossAxisAlignment: CrossAxisAlignment.start,
-    //         children: [
-    //           Text(
-    //             tx.title,
-    //             style: Theme.of(context).textTheme.titleMedium!.copyWith(
-    //                   color: Colors.grey[700],
-    //                 ),
-    //           ),
-    //           Text(
-    //             DateFormat('yMMMEd').format(tx.date),
-    //             style: const TextStyle(
-    //               color: Colors.grey,
-    //             ),
-    //           )
-    //         ],
-    //       ),
-    //       Text(
-    //         'Rp${tx.amount}',
-    //         style: TextStyle(
-    //           color: Theme.of(context).primaryColorDark,
-    //           fontWeight: FontWeight.bold,
-    //           fontSize: 16,
-    //         ),
-    //       ),
-    //     ]),
-    //   ),
-    // );
   }
 }
